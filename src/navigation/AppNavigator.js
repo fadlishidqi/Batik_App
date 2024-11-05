@@ -2,27 +2,31 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../app/home';
+import BottomTabs from './BottomTabs';
+import SplashScreen from '../screens/SplashScreen';
+import Login from '../screens/Login';
 
 const Stack = createStackNavigator();
 
 export default function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false 
+        }}
+      >
         <Stack.Screen 
-          name="Home" 
-          component={Home}
-          options={{
-            title: 'Batik Indonesia',
-            headerStyle: {
-              backgroundColor: '#fff',
-            },
-            headerTintColor: '#333',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }}
+          name="Splash" 
+          component={SplashScreen}
+        />
+        <Stack.Screen 
+          name="Login" 
+          component={Login}
+        />
+        <Stack.Screen 
+          name="MainTabs" 
+          component={BottomTabs}
         />
       </Stack.Navigator>
     </NavigationContainer>
